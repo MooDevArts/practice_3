@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
-        fontFamily: "Josefin_Sans",
+        fontFamily: "Josefin_Slab",
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -84,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(widget.title, style: TextStyle(fontFamily: "Josefin_Sans")),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -105,10 +106,39 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+            const Text(
+              'You have pushed the button this many times:',
+              style: TextStyle(fontSize: 24),
+              textAlign: TextAlign.center,
+            ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: TextStyle(
+                fontFamily: "Josefin_Slab",
+                fontSize: 48,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              child: TextField(
+                style: TextStyle(),
+                cursorColor: Colors.black,
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(width: 0.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 0.0, color: Colors.brown),
+                  ),
+                  label: Text("Data"),
+                  // Icon(
+                  //   Icons.access_alarms_outlined,
+                  //   color: Colors.brown,
+                  // ),
+                ),
+              ),
             ),
           ],
         ),
